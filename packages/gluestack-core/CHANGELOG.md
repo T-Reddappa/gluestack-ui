@@ -1,5 +1,11 @@
 # @gluestack-ui/core
 
+## 3.0.11
+
+### Patch Changes
+
+- feat: enhance overlay positioning with targetRect support and interaction point handling in Popover component
+
 ## 3.0.10
 
 ### Patch Changes
