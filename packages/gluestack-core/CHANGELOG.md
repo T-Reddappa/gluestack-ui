@@ -1,10 +1,17 @@
 # @gluestack-ui/core
 
+## 3.0.12
+
+### Patch Changes
+
+- fix: fixed actionsheet stale state while closing through drag
+
 ## 3.0.11
 
 ### Patch Changes
 
 - feat: enhance overlay positioning with targetRect support and interaction point handling in Popover component
+- fix: added initialwindowmetrics to safeareaprovider
 
 ## 3.0.10
 

@@ -1,35 +1,32 @@
 'use client';
 
-import React, { useContext, useState } from 'react';
 import { Badge, BadgeText } from '@/components/ui/badge';
+import { Box } from '@/components/ui/box';
 import { HStack } from '@/components/ui/hstack';
-import { Icon, ChevronUpIcon, ChevronDownIcon } from '@/components/ui/icon';
+import { ChevronDownIcon, ChevronUpIcon, Icon } from '@/components/ui/icon';
 import { Link } from '@/components/ui/link';
+import { Menu, MenuItem } from '@/components/ui/menu';
 import { Pressable } from '@/components/ui/pressable';
 import { Text } from '@/components/ui/text';
 import { VStack } from '@/components/ui/vstack';
-import { Box } from '@/components/ui/box';
-import { Menu, MenuItem } from '@/components/ui/menu';
-import Image from 'next/image';
 import GluestackLogo from '@/public/svg/gluestack_logo.svg';
 import GluestackLogoDark from '@/public/svg/gluestack_logo_dark.svg';
 import { MenuIcon, MoonIcon, SunIcon, X } from 'lucide-react-native';
+import Image from 'next/image';
+import React, { useContext, useState } from 'react';
 
-import NewsletterModal from './NewsLetterModal';
-import AppLaunchKitLogo from '@/public/icon/logo/app-launch-kit/dark-mode.svg';
-import GluestackProLogo from '@/public/icon/logo/gluestack-pro/logo.svg';
-import AppLaunchKitLogoDark from '@/public/icon/logo/app-launch-kit/light-mode.svg';
+import { useColorMode } from '@/app/provider';
+import { LayoutContext } from '@/components/custom/layout/LayoutContext';
+import AppLighterLogo from '@/public/icon/logo/applighter/logo.png';
+import GluestackMarketLogo from '@/public/icon/logo/gluestack-market/logo.png';
 import StarterKitLogo from '@/public/icon/logo/gluestack/logo-dark.svg';
 import StarterKitLogoDark from '@/public/icon/logo/gluestack/logo-light.svg';
-import AppMarketLogo from '@/public/icon/logo/theappmarket/appmarket-logo.svg';
 import RapidNativelogo from '@/public/icon/logo/rapidnative/logo.png';
-
-import NextLink from 'next/link';
 import { Nav } from '@expo/html-elements';
-import { ThemeContext } from '@/utils/context/theme-context';
+import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 import { UiDocSearch } from './Docsearch';
-import { LayoutContext } from '@/components/custom/layout/LayoutContext';
+import NewsletterModal from './NewsLetterModal';
 
 // Updated Header component with internal state management
 const Header = ({
@@ -44,7 +41,7 @@ const Header = ({
   const isOpenSidebar = propsIsOpenSidebar ?? context.isOpenSidebar;
   const setIsOpenSidebar = propsSetIsOpenSidebar ?? context.setIsOpenSidebar;
 
-  const { colorMode, setColorMode }: any = useContext(ThemeContext);
+  const { colorMode, setColorMode }: any = useColorMode();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
 
@@ -73,47 +70,47 @@ const Header = ({
         dark: RapidNativelogo,
       },
       title: 'RapidNative',
-      description: 'Generate native apps instantly with AI prompts.',
+      description: 'Generate native apps instantly with AI prompts',
       badge: {
-        text: 'PAID',
+        text: 'Partner',
+        action: 'info',
+      },
+    },
+    {
+      href: 'https://www.applighter.com/?utm_source=gluestack.io&utm_medium=header&utm_campaign=brand-awareness',
+      logo: {
+        light: AppLighterLogo,
+        dark: AppLighterLogo,
+      },
+      title: 'AppLighter',
+      description: 'Premium React Native & Expo Templates',
+      badge: {
+        text: 'Partner',
         action: 'info',
       },
     },
     {
       href: 'https://pro.gluestack.io/?utm_source=gluestack.io&utm_medium=header&utm_campaign=site-navigation',
       logo: {
-        light: GluestackProLogo,
-        dark: GluestackProLogo,
+        light: StarterKitLogo,
+        dark: StarterKitLogoDark,
       },
-      title: 'Gluestack Pro (Preview)',
-      description: 'Premium React Native templates that just work.',
+      title: 'gluestack-ui pro',
+      description: 'The only React Native templateyou’ll ever need',
       badge: {
         text: 'PAID',
         action: 'info',
       },
     },
     {
-      href: 'https://theappmarket.io',
+      href: 'https://market.gluestack.io/',
       logo: {
-        light: AppMarketLogo,
-        dark: AppMarketLogo,
+        light: GluestackMarketLogo,
+        dark: GluestackMarketLogo,
       },
-      title: 'theappmarket',
+      title: 'gluestack market',
       description:
         'Transform your app idea into reality with our production-ready, cross-platform free and premium React Native templates and UI kits, built with Expo, gluestack (NativeWind), and TypeScript.',
-      badge: {
-        text: 'PAID',
-        action: 'info',
-      },
-    },
-    {
-      href: 'https://applaunchk.it/',
-      logo: {
-        light: AppLaunchKitLogo,
-        dark: AppLaunchKitLogoDark,
-      },
-      title: 'AppLaunchKit',
-      description: 'Fullstack Universal Template for Android, iOS and Web',
       badge: {
         text: 'PAID',
         action: 'info',
@@ -180,6 +177,22 @@ const Header = ({
                   );
                 }}
               >
+                <MenuItem
+                  className="min-w-fit px-5 py-2"
+                  onPress={() => {
+                    window.open('https://v5.gluestack.io', '_blank');
+                  }}
+                >
+                  v5 alpha
+                </MenuItem>
+                <MenuItem
+                  className="min-w-fit px-5 py-2"
+                  onPress={() => {
+                    window.open('https://v4.gluestack.io', '_blank');
+                  }}
+                >
+                  v4 alpha
+                </MenuItem>
                 <MenuItem className="min-w-fit px-5 py-2">v3</MenuItem>
                 <MenuItem
                   className="min-w-fit px-5 py-2"
@@ -205,11 +218,11 @@ const Header = ({
                     <Pressable focusable={false} tabIndex={-1}>
                       <NextLink
                         className="web:focus:shadow-none lg:flex hidden rounded-full px-3 py-1 hover:bg-primary-50/10 active:bg-primary-50/20 outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-                        href="/ui/docs/mcp-server/mcp-server"
+                        href="https://www.applighter.com/?utm_source=gluestack.io&utm_medium=header&utm_campaign=site-navigation"
                       >
                         <Box className="rounded-full items-center justify-center">
                           <Text className="leading-normal font-normal text-sm text-typography-700">
-                            MCP Server
+                            Templates
                           </Text>
                         </Box>
                       </NextLink>
@@ -267,24 +280,26 @@ const Header = ({
                                   isExternal
                                   href={option.href}
                                 >
-                                  <HStack className="gap-3 justify-between w-full flex items-center">
-                                    <Image
-                                      alt="product logo"
-                                      className="w-6 h-6 mt-1"
-                                      src={
-                                        colorMode === 'dark'
-                                          ? option.logo.dark
-                                          : option.logo.light
-                                      }
-                                    />
-                                    <VStack>
-                                      <Text className="leading-normal font-medium text-sm text-typography-700 mb-1">
-                                        {option.title}
-                                      </Text>
-                                      <Text className="text-xs font-normal text-typography-500 leading-normal">
-                                        {option.description}
-                                      </Text>
-                                    </VStack>
+                                  <HStack className="gap-3 justify-between w-full flex items-start mt-1">
+                                    <HStack className="gap-2">
+                                      <Image
+                                        alt="product logo"
+                                        className="w-6 h-6 mt-1"
+                                        src={
+                                          colorMode === 'dark'
+                                            ? option.logo.dark
+                                            : option.logo.light
+                                        }
+                                      />
+                                      <VStack>
+                                        <Text className="leading-normal font-medium text-sm text-typography-700 mb-1">
+                                          {option.title}
+                                        </Text>
+                                        <Text className="text-xs font-normal text-typography-500 leading-normal">
+                                          {option.description}
+                                        </Text>
+                                      </VStack>
+                                    </HStack>
                                     <Badge
                                       className="h-fit w-fit"
                                       variant="solid"
@@ -327,7 +342,7 @@ const Header = ({
                 <Link
                   className="rounded-full"
                   aria-label="figma link"
-                  href="https://www.figma.com/community/file/1358053104938234615/gluestack-ui-v2-0-design-kit"
+                  href="https://www.figma.com/community/file/1577667149474894602"
                   isExternal
                 >
                   <svg
@@ -452,6 +467,14 @@ const Header = ({
                   )}
                 </Box>
               </Pressable>
+              {!pathname.includes('/docs') && (
+                <Link
+                  href="https://pro.gluestack.io/?utm_source=gluestack.io&utm_medium=banner_docs&utm_campaign=brand-awareness"
+                  className="border border-outline-200 px-4 py-1.5 xl:flex hidden rounded"
+                >
+                  <Text className="text-sm text-typography-900">Pro</Text>
+                </Link>
+              )}
               {!pathname.includes('/docs') ? (
                 <Link
                   href="/ui/docs"
@@ -469,13 +492,16 @@ const Header = ({
                       Get Updates
                     </Text>
                   </Link>
-                 <NewsletterModal showModal={showModal} setShowModal={setShowModal}/>
+                  <NewsletterModal
+                    showModal={showModal}
+                    setShowModal={setShowModal}
+                  />
                   <Link
                     href="https://rapidnative.com/?utm_source=gluestack.io&utm_medium=banner_docs&utm_campaign=brand-awareness"
                     className="bg-primary-500 px-4 py-1.5 xl:flex hidden rounded"
                   >
                     <Text className="text-sm text-typography-0">
-                      Prompt to React Native UI
+                      Prompt to React Native
                     </Text>
                   </Link>
                 </HStack>
