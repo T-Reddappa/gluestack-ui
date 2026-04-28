@@ -10,6 +10,7 @@
 
 ### Patch Changes
 
+- feat: enhance overlay positioning with targetRect support and interaction point handling in Popover component
 - fix: added initialwindowmetrics to safeareaprovider
 
 ## 3.0.10
