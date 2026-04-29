@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import { useControllableState } from '@gluestack-ui/utils/hooks';
 import { Overlay } from '../../overlay/creator';
 import { PopoverProvider } from './PopoverContext';
+import { mergeRefs } from '@gluestack-ui/utils/common';
 
 const POINT_SIZE = 1;
 
@@ -136,9 +137,10 @@ export const Popover = (StyledPopover: any) =>
       );
 
       const updatedTrigger = (reference: any) => {
+        const mergedTriggerRef = mergeRefs([reference, targetRef]);
         const triggerElement = trigger(
           {
-            'ref': reference,
+            'ref': mergedTriggerRef,
             'onPress': handleTriggerPress,
             'onClick': handleTriggerPress,
             'aria-expanded': isOpen ? true : false,
@@ -150,7 +152,7 @@ export const Popover = (StyledPopover: any) =>
 
         shouldAnchorToTouchPointRef.current = isTextTriggerElement(
           triggerElement,
-          reference
+          mergedTriggerRef
         );
 
         return triggerElement;
