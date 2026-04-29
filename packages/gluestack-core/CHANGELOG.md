@@ -1,5 +1,11 @@
 # @gluestack-ui/core
 
+## 3.0.19
+
+### Patch Changes
+
+- feat: implement inline text tooltip with long press interaction and enhance trigger handling in Tooltip component
+
 ## 3.0.12
 
 ### Patch Changes
