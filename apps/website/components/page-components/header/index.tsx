@@ -170,30 +170,30 @@ const Header = ({
                       className="flex-row items-center pb-0.5"
                     >
                       <Text className="font-geist-sans font-bold text-typography-800 text-sm">
-                        v3
+                        v5
                       </Text>
                       <Icon as={ChevronDownIcon} className="w-3 h-3 ml-1" />
                     </Pressable>
                   );
                 }}
               >
-                <MenuItem
-                  className="min-w-fit px-5 py-2"
-                  onPress={() => {
-                    window.open('https://v5.gluestack.io', '_blank');
-                  }}
-                >
-                  v5 alpha
-                </MenuItem>
+                <MenuItem className="min-w-fit px-5 py-2">v5</MenuItem>
                 <MenuItem
                   className="min-w-fit px-5 py-2"
                   onPress={() => {
                     window.open('https://v4.gluestack.io', '_blank');
                   }}
                 >
-                  v4 alpha
+                  v4
                 </MenuItem>
-                <MenuItem className="min-w-fit px-5 py-2">v3</MenuItem>
+                <MenuItem
+                  className="min-w-fit px-5 py-2"
+                  onPress={() => {
+                    window.open('https://v3.gluestack.io', '_blank');
+                  }}
+                >
+                  v3
+                </MenuItem>
                 <MenuItem
                   className="min-w-fit px-5 py-2"
                   onPress={() => {
